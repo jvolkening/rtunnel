@@ -1,0 +1,17 @@
+[Unit]
+Description="AutoSSH Tunnel"
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/tunnelrc
+ExecStart=/usr/bin/autossh -M 0 -N -R ${TUNNEL_PORT}:localhost:22 ${TUNNEL_HOST}
+User=tun
+Group=tun
+Restart=always
+RestartSec=60
+ProtectHome=read-only
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
