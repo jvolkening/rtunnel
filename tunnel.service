@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 EnvironmentFile=/etc/tunnelrc
-ExecStart=/usr/bin/autossh -M 0 -N -R ${TUNNEL_PORT}:localhost:22 ${TUNNEL_HOST}
+ExecStart=/usr/bin/autossh -M 0 -N ${TUNNEL_OPTS} -R ${TUNNEL_PORT}:localhost:22 ${TUNNEL_HOST}
 User=tun
 Group=tun
 Restart=always

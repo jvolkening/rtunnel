@@ -1,2 +1,3 @@
 TUNNEL_HOST=hophost
-TUNNEL_PORT=6032
+TUNNEL_PORT=6029
+TUNNEL_OPTS="-o ExitOnForwardFailure=yes"
