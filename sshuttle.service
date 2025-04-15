@@ -1,0 +1,14 @@
+[Unit]
+Description=sshuttle tunnel
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/tunnelrc
+ExecStart=/usr/bin/sshuttle --dns -r tun@${TUNNEL_HOST} -x 10.0.0.0/8 -D --pidfile=/var/run/sshuttle.pid -e 'ssh -i /root/.ssh/id_rsa.tun' 0/0
+Restart=always
+Type=forking
+PIDFile=/var/run/sshuttle.pid
+
+[Install]
+WantedBy=multi-user.target
